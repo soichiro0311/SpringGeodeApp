@@ -1,0 +1,13 @@
+package spring.geode.server.geodeServer.repository;
+
+import java.util.List;
+
+import org.springframework.data.gemfire.mapping.annotation.Region;
+import org.springframework.data.gemfire.repository.GemfireRepository;
+
+import spring.geode.server.geodeServer.model.User;
+
+@Region("userRegion")
+public interface UserRepository extends GemfireRepository<User, String> {
+	List<User> findByName(String name);
+}

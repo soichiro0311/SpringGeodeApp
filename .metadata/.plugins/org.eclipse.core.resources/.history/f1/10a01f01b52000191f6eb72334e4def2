@@ -1,0 +1,6 @@
+package spring.geode.springGeode.controller;
+
+@RestController
+public class UserController {
+
+}

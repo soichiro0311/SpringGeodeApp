@@ -1,0 +1,5 @@
+package spring.geode.geodeCommon.model;
+
+public class UserRequest {
+
+}

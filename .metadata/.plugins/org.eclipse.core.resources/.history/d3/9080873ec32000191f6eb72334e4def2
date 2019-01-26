@@ -1,0 +1,32 @@
+package spring.geode.springGeode.config;
+
+import java.awt.print.Book;
+
+import org.apache.geode.cache.client.ClientCache;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.gemfire.client.ClientCacheFactoryBean;
+import org.springframework.data.gemfire.client.ClientRegionFactoryBean;
+import org.springframework.data.gemfire.repository.config.EnableGemfireRepositories;
+
+@Configuration
+@EnableGemfireRepositories
+public class GeodeConfig {
+    @Bean
+    public ClientCacheFactoryBean geodeCache() throws Exception {
+        ClientCacheFactoryBean clientCacheFactory = new ClientCacheFactoryBean();
+        clientCacheFactory.setCacheXml(new ClassPathResource("client-cache.xml"));
+        clientCacheFactory.afterPropertiesSet();
+        return clientCacheFactory;
+    }
+
+    @Bean
+    public ClientRegionFactoryBean<String, Book> region(ClientCache cache) throws Exception {
+        ClientRegionFactoryBean<String, Book> clientRegionFactory = new ClientRegionFactoryBean<>();
+        clientRegionFactory.setCache(cache);
+        clientRegionFactory.setRegionName("myRegion");
+        clientRegionFactory.afterPropertiesSet();
+        return clientRegionFactory;
+    }
+}

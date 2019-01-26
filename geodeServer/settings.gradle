@@ -1,0 +1,3 @@
+rootProject.name = 'geodeServer'
+include ':geodeCommon'
+project(':geodeCommon').projectDir = new File('../geodeCommon')

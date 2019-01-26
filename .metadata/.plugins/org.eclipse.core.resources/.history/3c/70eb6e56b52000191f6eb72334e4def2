@@ -1,0 +1,19 @@
+package spring.geode.springGeode.controller;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import spring.geode.springGeode.model.User;
+import spring.geode.springGeode.service.UserService;
+
+@RestController
+public class UserController {
+	private final UserService userService;
+
+	@RequestMapping(path = "/find/user/{id}", method = RequestMethod.GET)
+	public User findById(@PathVariable int id) {
+		return userService.findById(id);
+	}
+}

@@ -1,0 +1,27 @@
+package spring.geode.client.geodeClient.controller;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import lombok.RequiredArgsConstructor;
+import spring.geode.client.geodeClient.service.UserService;
+import spring.geode.geodeCommon.model.User;
+
+@RestController
+@RequiredArgsConstructor
+public class UserController {
+	private final UserService userService;
+
+	@RequestMapping(path = "/find/user/{name}", method = RequestMethod.GET)
+	public User findById(@PathVariable String name) {
+		return userService.findByName(name);
+	}
+
+	@RequestMapping(path = "/register/user", method = RequestMethod.POST)
+	public String register(@RequestBody User user) {
+		return userService.register(user).getName();
+	}
+}

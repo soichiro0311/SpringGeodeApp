@@ -1,0 +1,24 @@
+package spring.geode.springGeode.service;
+
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+import spring.geode.springGeode.model.User;
+import spring.geode.springGeode.repository.UserRepository;
+
+@RequiredArgsConstructor
+@Service
+public class UserService {
+	private final UserRepository rep; 
+	public User findByName(String name) {
+		User user=rep.findByName(name).get(0);
+		System.out.println(user);
+		return user;
+	}
+	
+	public void register(String name) {
+		User commited=rep.save(new User(1,name));
+		System.out.println(commited);
+	}
+
+}

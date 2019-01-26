@@ -1,0 +1,5 @@
+package spring.geode.springGeode.config;
+
+public class GeodeConfig {
+
+}

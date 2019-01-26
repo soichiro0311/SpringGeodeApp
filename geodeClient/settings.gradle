@@ -1,0 +1,3 @@
+rootProject.name = 'geodeClient'
+include ':geodeCommon'
+project(':geodeCommon').projectDir = new File('../geodeCommon')

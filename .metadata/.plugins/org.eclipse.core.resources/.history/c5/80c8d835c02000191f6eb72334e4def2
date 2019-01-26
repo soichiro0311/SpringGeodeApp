@@ -1,0 +1,7 @@
+package spring.geode.springGeode.model;
+
+@Data
+public class User {
+	private String name;
+
+}

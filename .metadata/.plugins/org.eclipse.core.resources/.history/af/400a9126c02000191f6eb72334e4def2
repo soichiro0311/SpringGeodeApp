@@ -1,0 +1,13 @@
+package spring.geode.springGeode.service;
+
+import org.springframework.stereotype.Service;
+
+import spring.geode.springGeode.model.User;
+
+@Service
+public class UserService {
+	public User findByName(String name) {
+		return new User();
+	}
+
+}

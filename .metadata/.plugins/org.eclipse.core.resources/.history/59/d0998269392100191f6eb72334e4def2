@@ -1,0 +1,23 @@
+package spring.geode.springGeode;
+
+import org.apache.geode.cache.client.ClientRegionShortcut;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.gemfire.config.annotation.EnableCachingDefinedRegions;
+import org.springframework.data.gemfire.config.annotation.EnableEntityDefinedRegions;
+import org.springframework.data.gemfire.config.annotation.PeerCacheApplication;
+import org.springframework.data.gemfire.repository.config.EnableGemfireRepositories;
+
+@SpringBootApplication
+@PeerCacheApplication
+@EnableGemfireRepositories
+@EnableCachingDefinedRegions(clientRegionShortcut = ClientRegionShortcut.CACHING_PROXY)
+@EnableEntityDefinedRegions(basePackageClasses = "User.class")
+public class SpringGeodeApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringGeodeApplication.class, args);
+	}
+
+}
+
