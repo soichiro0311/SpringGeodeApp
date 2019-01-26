@@ -3,18 +3,18 @@ package spring.geode.server.geodeServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.gemfire.config.annotation.CacheServerApplication;
 import org.springframework.data.gemfire.config.annotation.EnableEntityDefinedRegions;
 import org.springframework.data.gemfire.config.annotation.EnableLocator;
 import org.springframework.data.gemfire.config.annotation.EnableManager;
 import org.springframework.data.gemfire.config.annotation.EnablePdx;
+import org.springframework.data.gemfire.config.annotation.PeerCacheApplication;
 import org.springframework.data.gemfire.repository.config.EnableGemfireRepositories;
 
 import spring.geode.geodeCommon.model.User;
 import spring.geode.server.geodeServer.repository.UserRepository;
 
 @SpringBootApplication
-@CacheServerApplication(locators = "localhost[40404]")
+@PeerCacheApplication(name = "SpringGeodeServerApplication",locators = "localhost[40404]")
 @EnableGemfireRepositories(basePackageClasses = UserRepository.class)
 @EnableEntityDefinedRegions(basePackageClasses = User.class)
 @EnablePdx
