@@ -1,8 +1,0 @@
-package spring.geode.geodeCommon.model;
-
-import lombok.Data;
-
-@Data
-public class UserRequest {
-
-}

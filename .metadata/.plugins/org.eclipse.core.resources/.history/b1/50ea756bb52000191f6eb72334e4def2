@@ -1,9 +1,0 @@
-package spring.geode.springGeode.service;
-
-@Service
-public class UserService {
-	public void findByName(String name) {
-		
-	}
-
-}
