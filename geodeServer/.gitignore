@@ -1,6 +1,6 @@
 .gradle
 /build/
-.bin
+.bin/*
 ../.metadata
 ../.recommenders
 !gradle/wrapper/gradle-wrapper.jar
@@ -19,6 +19,7 @@
 *.iws
 *.iml
 *.ipr
+*.class
 /out/
 
 ### NetBeans ###
