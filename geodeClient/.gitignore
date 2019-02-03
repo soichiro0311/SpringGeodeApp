@@ -3,6 +3,7 @@
 /bin/
 ../.metadata
 ../.recommenders
+../persistenceFile
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
@@ -20,6 +21,7 @@
 *.iml
 *.ipr
 *.class
+BACKUP*
 /out/
 
 ### NetBeans ###

@@ -15,7 +15,7 @@ import spring.geode.geodeCommon.model.User;
 import spring.geode.geodeCommon.region.UserRegion;
 
 @SpringBootApplication
-@PeerCacheApplication(name = "SpringGeodeClientApplication",locators = "localhost[40404]")
+@PeerCacheApplication(name = "SpringGeodeClientApplication", locators = "localhost[40404]")
 @EnableGemfireRepositories(basePackageClasses = UserRepository.class)
 public class GeodeClientApplication {
 
@@ -25,16 +25,15 @@ public class GeodeClientApplication {
 
 	@Configuration
 	static class CacheInitializer {
-		
+
 		@Bean
-	    Region<Integer, User> userRegion(final GemFireCache cache) {
+		Region<Integer, User> userRegion(final GemFireCache cache) {
 			return new UserRegion().createUserRegion(cache);
-	    }
-		
+		}
+
 		@Bean
-	    public ReplicatedRegionFactoryBean<Integer, User> replicatedRegion(GemFireCache cache) {
+		public ReplicatedRegionFactoryBean<Integer, User> replicatedRegion(GemFireCache cache) {
 			return new UserRegion().createUserRegionFactory(cache);
-	    }
+		}
 	}
 }
-

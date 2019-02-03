@@ -3,6 +3,7 @@
 .bin
 ../.metadata
 ../.recommenders
+../persistenceFile
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###

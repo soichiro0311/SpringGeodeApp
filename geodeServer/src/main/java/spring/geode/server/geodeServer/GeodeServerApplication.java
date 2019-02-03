@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.gemfire.ReplicatedRegionFactoryBean;
-import org.springframework.data.gemfire.config.annotation.EnableEntityDefinedRegions;
 import org.springframework.data.gemfire.config.annotation.EnableLocator;
 import org.springframework.data.gemfire.config.annotation.EnableManager;
 import org.springframework.data.gemfire.config.annotation.PeerCacheApplication;
@@ -34,15 +33,16 @@ public class GeodeServerApplication {
 
 	@Configuration
 	static class CacheInitializer {
-		
+
 		@Bean
-	    Region<Integer, User> userRegion(final GemFireCache cache) {
+		Region<Integer, User> userRegion(final GemFireCache cache) {
 			return new UserRegion().createUserRegion(cache);
-	    }
-		
+		}
+
 		@Bean
-	    public ReplicatedRegionFactoryBean<Integer, User> replicatedRegion(GemFireCache cache) {
-			return new UserRegion().createUserRegionFactory(cache);
-	    }
+		public ReplicatedRegionFactoryBean<Integer, User> replicatedRegion(GemFireCache cache) {
+			UserRegion region = new UserRegion();
+			return region.configDiskStore(cache, region.createUserRegionFactory(cache));
+		}
 	}
 }
